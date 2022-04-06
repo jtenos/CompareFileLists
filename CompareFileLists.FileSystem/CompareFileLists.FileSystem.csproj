@@ -14,4 +14,8 @@
 	<ItemGroup>
 		<Compile Include="..\SolutionInfo.cs" Link="SolutionInfo.cs" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\CompareFileLists.Core\CompareFileLists.Core.csproj" />
+	</ItemGroup>
 </Project>

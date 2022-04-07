@@ -14,4 +14,8 @@
 	<ItemGroup>
 	  <Compile Include="..\SolutionInfo.cs" Link="SolutionInfo.cs" />
 	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="NoEdgeSoftware.MergeSortFile" Version="0.1.0" />
+	</ItemGroup>
 </Project>

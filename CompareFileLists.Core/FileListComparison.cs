@@ -1,10 +1,16 @@
-﻿using System.Text.Json;
+﻿using MergeSortFile;
 
 namespace CompareFileLists.Core;
 
 public class FileListComparison
 {
     private static readonly DirectoryInfo _tempPath;
+    private readonly LineSorter _lineSorter;
+
+    public FileListComparison(LineSorter lineSorter)
+    {
+        _lineSorter = lineSorter;
+    }
 
     static FileListComparison()
     {
@@ -27,23 +33,33 @@ public class FileListComparison
 
             using (StreamWriter fs1 = file1.CreateText())
             {
-                await source1.WriteObjectsAsJsonAsync(fs1);
+                await source1.WriteObjectsAsync(fs1);
             }
             using (StreamWriter fs2 = file2.CreateText())
             {
-                await source2.WriteObjectsAsJsonAsync(fs2);
+                await source2.WriteObjectsAsync(fs2);
             }
 
-            await SortFileAsync(file1, file1Sorted).ConfigureAwait(false);
-            await SortFileAsync(file2, file2Sorted).ConfigureAwait(false);
+            _lineSorter.SortFile(
+                inputFileFullName: file1.FullName,
+                outputFileFullName: file1Sorted.FullName,
+                newLine: Environment.NewLine,
+                numLinesPerTempFile: 50_000
+            );
+            _lineSorter.SortFile(
+                inputFileFullName: file2.FullName,
+                outputFileFullName: file2Sorted.FullName,
+                newLine: Environment.NewLine,
+                numLinesPerTempFile: 50_000
+            );
 
             using StreamReader reader1 = file1.OpenText();
             using StreamReader reader2 = file2.OpenText();
             (string? line1, string? line2) = (reader1.ReadLine(), reader2.ReadLine());
             while (line1 is not null || line2 is not null)
             {
-                ObjectInfo? object1 = line1 is not null ? JsonSerializer.Deserialize<ObjectInfo>(line1) : null;
-                ObjectInfo? object2 = line2 is not null ? JsonSerializer.Deserialize<ObjectInfo>(line2) : null;
+                ObjectInfo? object1 = line1 is not null ? ObjectInfo.FromFormattedOutput(line1) : null;
+                ObjectInfo? object2 = line2 is not null ? ObjectInfo.FromFormattedOutput(line2) : null;
 
                 if (!object1.HasValue)
                 {
@@ -90,14 +106,5 @@ public class FileListComparison
             try { file1Sorted?.Delete(); } catch { }
             try { file2Sorted?.Delete(); } catch { }
         }
-    }
-
-    private static async Task SortFileAsync(FileInfo unsortedFile, FileInfo sortedFile)
-    {
-        IEnumerable<ObjectInfo> sortedObjects = (await File.ReadAllLinesAsync(unsortedFile.FullName).ConfigureAwait(false))
-            .Select(line => JsonSerializer.Deserialize<ObjectInfo>(line))
-            .OrderBy(oi => oi.RelativeName);
-
-        await File.WriteAllLinesAsync(sortedFile.FullName, sortedObjects.Select(oi => JsonSerializer.Serialize(oi)));
     }
 }

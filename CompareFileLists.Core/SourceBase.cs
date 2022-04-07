@@ -1,7 +1,4 @@
-﻿using System.Text;
-using System.Text.Json;
-
-namespace CompareFileLists.Core;
+﻿namespace CompareFileLists.Core;
 
 public abstract class SourceBase
 {
@@ -20,11 +17,11 @@ public abstract class SourceBase
     /// one per line. The caller will need to sort the results prior
     /// to comparing them.</param>
     /// <returns></returns>
-    public async Task WriteObjectsAsJsonAsync(TextWriter textWriter)
+    public async Task WriteObjectsAsync(TextWriter textWriter)
     {
         await foreach (ObjectInfo objInfo in EnumerateObjectsAsync().ConfigureAwait(false))
         {
-            textWriter.WriteLine(JsonSerializer.Serialize(objInfo));
+            textWriter.WriteLine(objInfo.ToFormattedOutput());
         }
     }
 }

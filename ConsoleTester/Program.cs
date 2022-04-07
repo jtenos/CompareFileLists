@@ -1,7 +1,8 @@
 ﻿using CompareFileLists.Core;
 using CompareFileLists.FileSystem;
+using MergeSortFile;
 
-FileListComparison flc = new();
+FileListComparison flc = new(new LineSorter(logger: null));
 FileSystemSource source1 = new(@"C:\temp\dir1");
 FileSystemSource source2 = new(@"C:\temp\dir2");
 

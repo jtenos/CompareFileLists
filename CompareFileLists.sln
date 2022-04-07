@@ -5,11 +5,13 @@ VisualStudioVersion = 17.1.32228.430
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.Core", "CompareFileLists.Core\CompareFileLists.Core.csproj", "{1CA5AD70-4957-43BE-9A6E-9CDE5A7351D8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.FileSystem", "CompareFileLists.FileSystem\CompareFileLists.FileSystem.csproj", "{BA323AA4-9469-42FF-9978-906BEB42DEC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.FileSystem", "CompareFileLists.FileSystem\CompareFileLists.FileSystem.csproj", "{BA323AA4-9469-42FF-9978-906BEB42DEC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{D6D9BF85-5ADD-48E6-A5BA-CDB3E9CEDAEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{D6D9BF85-5ADD-48E6-A5BA-CDB3E9CEDAEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.Tests", "CompareFileLists.Tests\CompareFileLists.Tests.csproj", "{F96829BF-E582-4052-9656-089AA1BA760B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.Tests", "CompareFileLists.Tests\CompareFileLists.Tests.csproj", "{F96829BF-E582-4052-9656-089AA1BA760B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.S3", "CompareFileLists.S3\CompareFileLists.S3.csproj", "{271D2E6D-818C-43B0-B620-783D9A65A249}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F96829BF-E582-4052-9656-089AA1BA760B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F96829BF-E582-4052-9656-089AA1BA760B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F96829BF-E582-4052-9656-089AA1BA760B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271D2E6D-818C-43B0-B620-783D9A65A249}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271D2E6D-818C-43B0-B620-783D9A65A249}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271D2E6D-818C-43B0-B620-783D9A65A249}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271D2E6D-818C-43B0-B620-783D9A65A249}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

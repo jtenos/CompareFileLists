@@ -1,14 +1,18 @@
 ﻿using MergeSortFile;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace CompareFileLists.Core;
 
 public class FileListComparison
 {
     private static readonly DirectoryInfo _tempPath;
+    private readonly ILogger<FileListComparison> _logger;
     private readonly LineSorter _lineSorter;
 
-    public FileListComparison(LineSorter lineSorter)
+    public FileListComparison(ILogger<FileListComparison>? logger, LineSorter lineSorter)
     {
+        _logger = logger ?? new NullLogger<FileListComparison>();
         _lineSorter = lineSorter;
     }
 
@@ -31,21 +35,27 @@ public class FileListComparison
             file2 = new(Path.Combine(_tempPath.FullName, Guid.NewGuid().ToString("N")));
             file2Sorted = new($"{file2.FullName}.sorted");
 
+            _logger.LogInformation("Writing objects to {file1}", file1.FullName);
             using (StreamWriter fs1 = file1.CreateText())
             {
                 await source1.WriteObjectsAsync(fs1);
             }
+
+            _logger.LogInformation("Writing objects to {file2}", file2.FullName);
             using (StreamWriter fs2 = file2.CreateText())
             {
                 await source2.WriteObjectsAsync(fs2);
             }
 
+            _logger.LogInformation("Sorting {file1}", file1.FullName);
             _lineSorter.SortFile(
                 inputFileFullName: file1.FullName,
                 outputFileFullName: file1Sorted.FullName,
                 newLine: Environment.NewLine,
                 numLinesPerTempFile: 50_000
             );
+
+            _logger.LogInformation("Sorting {file2}", file2.FullName);
             _lineSorter.SortFile(
                 inputFileFullName: file2.FullName,
                 outputFileFullName: file2Sorted.FullName,
@@ -53,6 +63,7 @@ public class FileListComparison
                 numLinesPerTempFile: 50_000
             );
 
+            _logger.LogInformation("Comparing files");
             using StreamReader reader1 = file1.OpenText();
             using StreamReader reader2 = file2.OpenText();
             (string? line1, string? line2) = (reader1.ReadLine(), reader2.ReadLine());
@@ -101,6 +112,7 @@ public class FileListComparison
         }
         finally
         {
+            _logger.LogInformation("Deleting files");
             try { file1?.Delete(); } catch { }
             try { file2?.Delete(); } catch { }
             try { file1Sorted?.Delete(); } catch { }

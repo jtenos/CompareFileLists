@@ -1,4 +1,5 @@
 ﻿using CompareFileLists.AzureBlob;
+using CompareFileLists.Backblaze;
 using CompareFileLists.Core;
 using CompareFileLists.FileSystem;
 using MergeSortFile;
@@ -7,13 +8,20 @@ using System.Text;
 Console.OutputEncoding = Encoding.UTF8;
 
 FileListComparison flc = new(logger: null, new LineSorter(logger: null));
-FileSystemSource source1 = new(@"C:\temp\dir1");
-//FileSystemSource source2 = new(@"C:\temp\dir2");
-Console.Write("Connection String: ");
+
+Console.Write("Azure Blob Connection String: ");
 string connectionString = Console.ReadLine() ?? "";
-Console.Write("Container Name: ");
+Console.Write("Azure Blob Container Name: ");
 string containerName = Console.ReadLine() ?? "";
-AzureBlobSource source2 = new(connectionString, containerName);
+AzureBlobSource source1 = new(connectionString, containerName);
+
+Console.Write("Backblaze Application Key ID: ");
+string appKeyID = Console.ReadLine() ?? "";
+Console.Write("Backblaze Application Key: ");
+string appKey = Console.ReadLine() ?? "";
+Console.Write("Backblaze Bucket ID: ");
+string bucketID = Console.ReadLine() ?? "";
+BackblazeSource source2 = new(appKeyID, appKey, bucketID);
 
 await foreach (Difference diff in flc.CompareSourcesAsync(source1, source2))
 {

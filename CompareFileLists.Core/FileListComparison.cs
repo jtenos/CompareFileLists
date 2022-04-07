@@ -64,8 +64,8 @@ public class FileListComparison
             );
 
             _logger.LogInformation("Comparing files");
-            using StreamReader reader1 = file1.OpenText();
-            using StreamReader reader2 = file2.OpenText();
+            using StreamReader reader1 = file1Sorted.OpenText();
+            using StreamReader reader2 = file2Sorted.OpenText();
             (string? line1, string? line2) = (reader1.ReadLine(), reader2.ReadLine());
             while (line1 is not null || line2 is not null)
             {
@@ -78,14 +78,14 @@ public class FileListComparison
                     line2 = reader2.ReadLine();
                     continue;
                 }
-                
+
                 if (!object2.HasValue)
                 {
                     yield return new Difference(object1, object2, DifferenceType.MissingFromSource2);
                     line1 = reader1.ReadLine();
                     continue;
                 }
-                
+
                 if (string.Compare(object1.Value.RelativeName, object2.Value.RelativeName) < 0)
                 {
                     yield return new Difference(object1, null, DifferenceType.MissingFromSource2);

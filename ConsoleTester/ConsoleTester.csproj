@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompareFileLists.AzureBlob\CompareFileLists.AzureBlob.csproj" />
+    <ProjectReference Include="..\CompareFileLists.BackBlaze\CompareFileLists.Backblaze.csproj" />
     <ProjectReference Include="..\CompareFileLists.Core\CompareFileLists.Core.csproj" />
     <ProjectReference Include="..\CompareFileLists.FileSystem\CompareFileLists.FileSystem.csproj" />
   </ItemGroup>

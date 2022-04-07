@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.Tests", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.S3", "CompareFileLists.S3\CompareFileLists.S3.csproj", "{271D2E6D-818C-43B0-B620-783D9A65A249}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.AzureBlob", "CompareFileLists.AzureBlob\CompareFileLists.AzureBlob.csproj", "{FDD588C3-374C-4AAB-8E75-7674E56165D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{271D2E6D-818C-43B0-B620-783D9A65A249}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{271D2E6D-818C-43B0-B620-783D9A65A249}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{271D2E6D-818C-43B0-B620-783D9A65A249}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FDD588C3-374C-4AAB-8E75-7674E56165D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FDD588C3-374C-4AAB-8E75-7674E56165D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FDD588C3-374C-4AAB-8E75-7674E56165D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FDD588C3-374C-4AAB-8E75-7674E56165D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

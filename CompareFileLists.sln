@@ -11,11 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTester", "ConsoleTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.Tests", "CompareFileLists.Tests\CompareFileLists.Tests.csproj", "{F96829BF-E582-4052-9656-089AA1BA760B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.S3", "CompareFileLists.S3\CompareFileLists.S3.csproj", "{271D2E6D-818C-43B0-B620-783D9A65A249}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.S3", "CompareFileLists.S3\CompareFileLists.S3.csproj", "{271D2E6D-818C-43B0-B620-783D9A65A249}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.AzureBlob", "CompareFileLists.AzureBlob\CompareFileLists.AzureBlob.csproj", "{FDD588C3-374C-4AAB-8E75-7674E56165D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.AzureBlob", "CompareFileLists.AzureBlob\CompareFileLists.AzureBlob.csproj", "{FDD588C3-374C-4AAB-8E75-7674E56165D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists.Backblaze", "CompareFileLists.BackBlaze\CompareFileLists.Backblaze.csproj", "{69EA342D-510E-41ED-8A22-16F674A0F1B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompareFileLists.Backblaze", "CompareFileLists.BackBlaze\CompareFileLists.Backblaze.csproj", "{69EA342D-510E-41ED-8A22-16F674A0F1B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareFileLists", "CompareFileLists\CompareFileLists.csproj", "{26569753-A62F-4AFE-BA10-4A80F75D4BE1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{69EA342D-510E-41ED-8A22-16F674A0F1B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69EA342D-510E-41ED-8A22-16F674A0F1B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69EA342D-510E-41ED-8A22-16F674A0F1B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26569753-A62F-4AFE-BA10-4A80F75D4BE1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26569753-A62F-4AFE-BA10-4A80F75D4BE1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26569753-A62F-4AFE-BA10-4A80F75D4BE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26569753-A62F-4AFE-BA10-4A80F75D4BE1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

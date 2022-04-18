@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<LangVersion>latest</LangVersion>
+		<Nullable>enable</Nullable>
+		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<WarningsAsErrors />
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+	</PropertyGroup>
+	<ItemGroup>
+		<Compile Include="..\SolutionInfo.cs" Link="SolutionInfo.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Spectre.Console" Version="0.44.0" />
+		<PackageReference Include="System.CommandLine" Version="2.0.0-beta3.22114.1" />
+	</ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CompareFileLists.AzureBlob\CompareFileLists.AzureBlob.csproj" />
+		<ProjectReference Include="..\CompareFileLists.BackBlaze\CompareFileLists.Backblaze.csproj" />
+		<ProjectReference Include="..\CompareFileLists.Core\CompareFileLists.Core.csproj" />
+		<ProjectReference Include="..\CompareFileLists.FileSystem\CompareFileLists.FileSystem.csproj" />
+		<ProjectReference Include="..\CompareFileLists.S3\CompareFileLists.S3.csproj" />
+	</ItemGroup>
+</Project>
